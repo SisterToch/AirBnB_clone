@@ -5,10 +5,14 @@ from datetime import datetime
 
 class BaseModel:
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
+
+        for key, value in kwargs.items():
+            if kwargs is not "":
+            
 
     def __str__(self):
         return "{}{}{}".format(self.__dict__, self.__class__.__name__, self.id)
