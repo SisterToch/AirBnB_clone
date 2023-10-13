@@ -47,16 +47,42 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_all(self, arg):
-        destroyed = destroyed.split()
+        destroyed = arg.split()
         objs = storage.all()
         if not arg:
             print([str(obj) for obj in objs.values()])
         elif destroyed[0] not in globals():
             print("** class doesnt exist **")
         else:
-            print([str(obj) for key, obj in objs.items() if key.startswith(objs[0])])
+            print([str(obj) for key, obj in objs.items() if key.startswith(destroyed[0])])
 
+    def do_update(self, arg):
+        """updates based on class name & id for each instance"""
+        update = arg.split()
+        if not arg:
+            print("** class name missing **")
+        elif update[0] not in globals():
+            print("** class doesn't exist **")
+        elif len(update) < 2:
+            print("** instance id missing **")
+        elif len(update) < 3:
+            print("** attribute name missing **")
+        elif len(update) < 4:
+            print("** value missing **")
+        else:
+            objs = storage.all()
+            objectkey = f"{update[0]}.{update[1]}"
+            obj = objs.get(objectkey, None)
+            if obj is None:
+                print("** no instance found **")
+            else:
+                setattr(obj, args[2], args[3])
+                obj.save()
 
+    def emptyline(self):
+        "overwrite to repeat last cmd"""
+        pass
+        
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
