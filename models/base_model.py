@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 from uuid import uuid4
 from datetime import datetime
-from models import storage
 
 
 class BaseModel:
 
     def __init__(self, *args, **kwargs):
+        from models import storage
 
         if kwargs:
             for key, value in kwargs.items():
@@ -28,6 +28,7 @@ class BaseModel:
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
+        from models import storage
         self.updated_at = datetime.now()
         storage.new(self)
         storage.save()
