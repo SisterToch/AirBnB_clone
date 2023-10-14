@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""the module creates place"""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
+    """place class"""
     city_id = ""
     user_id = ""
     name = ""
