@@ -3,10 +3,10 @@
 import unittest
 from models.amenity import Amenity
 
+
 class AmenityTest(unittest.TestCase):
     """this class is for testing the amenity"""
     def test_attribute_type(self):
         """test the class here"""
         amenity = Amenity()
         self.assertEqual(type(amenity.name), str)
-

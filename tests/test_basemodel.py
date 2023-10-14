@@ -36,8 +36,14 @@ class TestBaseModel(unittest.TestCase):
         my_model = BaseModel()
         my_model_dict = my_model.to_dict()
         date_format = "%Y-%m-%dT%H:%M:%S.%f"
-        self.assertEqual(datetime.strptime(my_model_dict['created_at'], date_format).isoformat(), my_model.created_at.isoformat())
-        self.assertEqual(datetime.strptime(my_model_dict['updated_at'], date_format).isoformat(), my_model.updated_at.isoformat())
+        self.assertEqual(
+            datetime.strptime(my_model_dict['created_at'], date_format).isoformat(),
+            my_model.created_at.isoformat()
+           )
+        self.assertEqual(
+            datetime.strptime(my_model_dict['updated_at'], date_format).isoformat(),
+            my_model.updated_at.isoformat()
+        )
 
     def test_str_method_output(self):
         my_model = BaseModel()

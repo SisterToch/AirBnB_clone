@@ -3,6 +3,7 @@
 import unittest
 from models.city import City
 
+
 class Test_City(unittest.TestCase):
     """class tests for city"""
     def test_attribute_types(self):
@@ -10,4 +11,3 @@ class Test_City(unittest.TestCase):
         city = City()
         self.assertEqual(type(city.state_id), str)
         self.assertEqual(type(city.name), str)
-
