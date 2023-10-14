@@ -2,6 +2,7 @@ import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 
+
 class TestBaseModel(unittest.TestCase):
 
     def test_id_is_string(self):
@@ -54,4 +55,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn('number', my_model_dict)
         self.assertEqual(my_model_dict['name'], "Test")
         self.assertEqual
-
