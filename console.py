@@ -58,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """command to destroy"""
         lists = arg.split(" ")
-        if not lists:
+        if not arg:
             print("** class name missing **")
             return
         elif lists[0] not in globals():
@@ -68,11 +68,11 @@ class HBNBCommand(cmd.Cmd):
         else:
             objs = storage.all()
             objectkey = f"{lists[0]}.{lists[1]}"
-        if objectkey and objs and objectkey in objs:
-            del objs[objectkey]
-            storage.save()
-        elif objectkey:
-            print("** no instance found **")
+            if objectkey and objs and objectkey in objs:
+                del objs[objectkey]
+                storage.save()
+            elif objectkey:
+                print("** no instance found **")
 
     def do_all(self, arg):
         """command to implement all"""
