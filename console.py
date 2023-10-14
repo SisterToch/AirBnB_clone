@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import sys
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -7,11 +8,12 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
+    """this is the cmd class"""
 
     prompt = "(hbnb) "
 
     def do_quit(self, arg):
-        """exits program"""
+        """command to exits program"""
         return True
 
     def do_EOF(self, arg):
@@ -51,6 +53,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
+        """command to destroy"""
         lists = arg.split(" ")
         if not lists:
             print("** class name missing **")
@@ -69,6 +72,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_all(self, arg):
+        """command to implement all"""
         lists = arg.split()
         objs = storage.all()
         if not arg:
@@ -98,7 +102,7 @@ class HBNBCommand(cmd.Cmd):
             if obj is None:
                 print("** no instance found **")
             else:
-                setattr(obj, args[2], args[3])
+                setattr(obj, update[2], update[3])
                 obj.save()
 
     def emptyline(self):
