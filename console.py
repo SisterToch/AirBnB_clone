@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-import sys
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -32,6 +31,10 @@ class HBNBCommand(cmd.Cmd):
             print(latest_inst.id)
         except NameError:
             print("** class doesnt exist **")
+
+    def do_help(self, arg):
+        """lists the commands"""
+        cmd.Cmd.do_help(self, arg)
 
     def do_show(self, arg):
         """string representation printout"""
