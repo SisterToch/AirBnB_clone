@@ -83,7 +83,8 @@ class HBNBCommand(cmd.Cmd):
         elif lists[0] not in globals():
             print("** class doesnt exist **")
         else:
-            print([str(obj) for key, obj in objs.items() if key.startswith(lists[0])])
+            print([str(obj) for key, obj in objs.items()
+                  if key.startswith(lists[0])])
 
     def do_update(self, arg):
         """updates based on class name & id for each instance"""
