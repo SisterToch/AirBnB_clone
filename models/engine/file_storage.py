@@ -20,13 +20,13 @@ class FileStorage:
         serial = {}
         for key, value in self.__objects.items():
             serial[key] = value.to_dict()
-        with open(self.__file_path, "w", encoding = "utf-8") as f:
+        with open(self.__file_path, "w", encoding="utf-8") as f:
             json.dump(serial, f)
 
     def reload(self):
         from models.base_model import BaseModel
         try:
-            with open(self.__file_path, "r", encoding = "utf-8") as r:
+            with open(self.__file_path, "r", encoding="utf-8") as r:
                 loaded_file = json.load(r)
                 for key, value in loaded_file.items():
                     class_key = value.get("__class__")
@@ -34,4 +34,3 @@ class FileStorage:
 
         except FileNotFoundError:
             pass
-
