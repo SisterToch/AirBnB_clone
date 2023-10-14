@@ -68,10 +68,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             objs = storage.all()
             objectkey = f"{lists[0]}.{lists[1]}"
-        if objectkey in objs:
+        if objectkey and objs and objectkey in objs:
             del objs[objectkey]
             storage.save()
-        else:
+        elif objectkey:
             print("** no instance found **")
 
     def do_all(self, arg):
