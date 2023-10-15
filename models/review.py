@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""the module is for review"""
+"""
+the module is for reviews by clients
+"""
 from models.base_model import BaseModel
 
 

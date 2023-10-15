@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""the module creates place"""
+"""
+the module creates place inheriting from model
+"""
 from models.base_model import BaseModel
 
 

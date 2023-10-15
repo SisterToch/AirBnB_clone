@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""the module for user"""
+"""
+the module for user on the airbnb
+"""
 from models.base_model import BaseModel
 
 

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""this creates class amenity"""
+"""
+this creates class amenity
+"""
 from models.base_model import BaseModel
 
 

@@ -62,18 +62,18 @@ class TestBaseModel(unittest.TestCase):
         expected_output = "[BaseModel] ({}) {}".format(my_model.id, my_model.__dict__)
         self.assertEqual(str(my_model), expected_output)
 
-    def test_to_dict_returns_dict(self):
+    def test_to_dict_returns(self):
         """we check if the to_dict feture works"""
         my_model = BaseModel()
         self.assertIsInstance(my_model.to_dict(), dict)
 
-    def test_extra_attributes(self):
+    def test_xtra_attributes(self):
         """here we make the attributes for the instances"""
         my_model = BaseModel()
-        my_model.name = "Test"
-        my_model.number = 123
+        my_model.name = "Tochukwu"
+        my_model.number = 419
         my_model_dict = my_model.to_dict()
         self.assertIn('name', my_model_dict)
         self.assertIn('number', my_model_dict)
-        self.assertEqual(my_model_dict['name'], "Test")
+        self.assertEqual(my_model_dict['name'], "Tochukwu")
         self.assertEqual

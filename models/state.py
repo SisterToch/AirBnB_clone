@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""this module for state"""
+"""
+this module for state users
+"""
 from models.base_model import BaseModel
 
 

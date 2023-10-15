@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""this is the module for the storage"""
+"""
+this is the module for the storage
+
+it makes links with the basemodel, the review, state
+"""
 import json
 import datetime
 from models.base_model import BaseModel
@@ -25,21 +29,30 @@ cls_dict = {
 
 
 class FileStorage:
-    """this is the class for the file storage"""
+    """
+    this is the class for the file storage
+    details are included in the code
+    """
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """returns the dictionary __objects"""
+        """
+        returns the dictionary __objects"""
         return FileStorage.__objects
 
     def new(self, obj):
-        """set in the object with the key "obj class name" and the id"""
+        """
+        set in the object with the key "obj class name" and the id
+        """
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """this function saves the instance of the class"""
+        """
+        this function saves the instance of the class
+        in the serial list
+        """
         serial = {}
         for key, value in FileStorage.__objects.items():
             serial[key] = value.to_dict()
@@ -47,7 +60,10 @@ class FileStorage:
             json.dump(serial, f)
 
     def reload(self):
-        """this is to reload an instance already entered"""
+        """
+        this is to reload an instance already entered
+        by the client or other person
+        """
         try:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as r:
                 loaded_file = json.load(r)
