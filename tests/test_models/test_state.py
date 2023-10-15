@@ -10,3 +10,7 @@ class TestState(unittest.TestCase):
         """class for state"""
         state = State()
         self.assertEqual(type(state.name), str)
+
+
+if __name__ == '__main__':
+    unittest.main()

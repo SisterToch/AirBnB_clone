@@ -77,3 +77,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn('number', my_model_dict)
         self.assertEqual(my_model_dict['name'], "Tochukwu")
         self.assertEqual
+
+
+if __name__ == '__main__':
+    unittest.main()
