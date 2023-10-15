@@ -26,11 +26,16 @@ class HBNBCommand(cmd.Cmd):
             print("** class name is missing **")
             return
         try:
-            latest_inst = eval(arg)()
-            latest_inst.save()
-            print(latest_inst.id)
+            args = arg.split(" ")[0]
+
+            if args not in FileStorage.cls_dict:
+                print("** class doesn't exist **")
+            else:
+                new_inst = FileStorage.cls_dict[args]()
+                new_inst.save()
+                print(new_inst.id)
         except NameError:
-            print("** class doesnt exist **")
+            print("** class doesn't exist **")
 
     def do_help(self, arg):
         """lists the commands"""
@@ -48,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
         if len(Argz) < 2:
             print("** instance id missing **")
             return
-        key = Argz[0] + '.' + Argz[1]
+        key = "{}.{}".format(Argz[0], Argz[1])
         objects = storage.all()
         if key in objects:
             print(objects[key])
@@ -62,26 +67,26 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         elif lists[0] not in globals():
-            print("** class doesnt exist **")
+            print("** class doesn't exist **")
         elif len(lists) < 2:
             print("** instance id is missing **")
         else:
             objs = storage.all()
-            objectkey = f"{lists[0]}.{lists[1]}"
-            if objectkey and objs and objectkey in objs:
+            objectkey = "{}.{}".format(lists[0], lists[1])
+            if objectkey in objs:
                 del objs[objectkey]
                 storage.save()
-            elif objectkey:
+            else objectkey:
                 print("** no instance found **")
 
     def do_all(self, arg):
-        """command to implement all"""
+        """command to implement all functions"""
         lists = arg.split()
         objs = storage.all()
         if not arg:
             print([str(obj) for obj in objs.values()])
         elif lists[0] not in globals():
-            print("** class doesnt exist **")
+            print("** class doesn't exist **")
         else:
             print([str(obj) for key, obj in objs.items()
                   if key.startswith(lists[0])])
@@ -101,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             objs = storage.all()
-            objectkey = f"{update[0]}.{update[1]}"
+            objectkey = "{}.{}".format(update[0], update[1])
             obj = objs.get(objectkey, None)
             if obj is None:
                 print("** no instance found **")
