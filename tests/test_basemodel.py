@@ -1,31 +1,40 @@
 #!/usr/bin/python3
-
+"""this is a test model"""
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 
 
 class TestBaseModel(unittest.TestCase):
+    """the main class for the test model"""
 
     def test_id_is_string(self):
+        """this tests if the id is a string as
+        we are supposed to make it one"""
         my_model = BaseModel()
         self.assertIsInstance(my_model.id, str)
 
     def test_created_at_is_datetime(self):
+        """this test is to check the time allocated
+        for created at"""
         my_model = BaseModel()
         self.assertIsInstance(my_model.created_at, datetime)
 
     def test_updated_at_is_datetime(self):
+        """to test the updated at, if it follows the
+        specified standard"""
         my_model = BaseModel()
         self.assertIsInstance(my_model.updated_at, datetime)
 
     def test_save_updates_updated_at(self):
+        """checks for the saved updatess given"""
         my_model = BaseModel()
         previous_updated_at = my_model.updated_at
         my_model.save()
         self.assertNotEqual(previous_updated_at, my_model.updated_at)
 
     def test_to_dict_contains_correct_keys(self):
+        """does the todict provide the accurate keys?"""
         my_model = BaseModel()
         my_model_dict = my_model.to_dict()
         expected_keys = ['id', 'created_at', 'updated_at', '__class__']
@@ -33,6 +42,7 @@ class TestBaseModel(unittest.TestCase):
             self.assertIn(key, my_model_dict)
 
     def test_to_dict_datetime_format(self):
+        """this test tests the time format of base"""
         my_model = BaseModel()
         my_model_dict = my_model.to_dict()
         date_format = "%Y-%m-%dT%H:%M:%S.%f"
@@ -46,15 +56,19 @@ class TestBaseModel(unittest.TestCase):
         )
 
     def test_str_method_output(self):
+        """here we are testing the string format
+        of the basemodel"""
         my_model = BaseModel()
         expected_output = "[BaseModel] ({}) {}".format(my_model.id, my_model.__dict__)
         self.assertEqual(str(my_model), expected_output)
 
     def test_to_dict_returns_dict(self):
+        """we check if the to_dict feture works"""
         my_model = BaseModel()
         self.assertIsInstance(my_model.to_dict(), dict)
 
     def test_extra_attributes(self):
+        """here we make the attributes for the instances"""
         my_model = BaseModel()
         my_model.name = "Test"
         my_model.number = 123

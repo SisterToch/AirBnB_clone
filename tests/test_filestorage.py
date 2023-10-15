@@ -5,7 +5,6 @@ from models.engine.file_storage import FileStorage
 from models.amenity import Amenity
 
 
-
 class TestFileStorage(unittest.TestCase):
 
     def setUp(self):
