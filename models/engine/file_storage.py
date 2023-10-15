@@ -34,7 +34,6 @@ class FileStorage:
                     "Amenity": Amenity
     }
 
-
     def all(self):
         """
         returns the dictionary __objects"""
@@ -69,7 +68,7 @@ class FileStorage:
                 for key, value in loaded_file.items():
                     class_key = value["__class__"]
                     if class_key in self.cls_dict.keys():
-                       self.new(self.cls_dict[class_key](**value))
+                        self.new(self.cls_dict[class_key](**value))
 
         except FileNotFoundError:
             pass
