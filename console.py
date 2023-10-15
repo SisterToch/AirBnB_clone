@@ -11,7 +11,7 @@ from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
-    """this is the cmd class"""
+    """this is the cmd class, the beginning of the interpreter"""
 
     prompt = "(hbnb) "
 
@@ -25,7 +25,9 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, arg):
-        """instance of basemodel, saves it"""
+        """
+        instance of basemodel, saves it
+        """
         if not arg:
             print("** class name is missing **")
             return
@@ -42,11 +44,15 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_help(self, arg):
-        """lists the commands"""
+        """
+        lists the commands for the interpreter
+        """
         cmd.Cmd.do_help(self, arg)
 
     def do_show(self, arg):
-        """string representation printout"""
+        """
+        prints the string representation printout
+        """
         Argz = arg.split()
         if not arg:
             print("** class name missing **")
@@ -65,7 +71,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        """command to destroy"""
+        """
+        this function provides the command to destroy
+        """
         lists = arg.split(" ")
         if not arg:
             print("** class name missing **")
@@ -84,7 +92,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
-        """command to implement all functions"""
+        """
+        this command works to implement all functions
+        """
         lists = arg.split()
         objs = storage.all()
         if not arg:
@@ -96,7 +106,9 @@ class HBNBCommand(cmd.Cmd):
                   if key.startswith(lists[0])])
 
     def do_update(self, arg):
-        """updates based on class name & id for each instance"""
+        """
+        updates based on class name & id for each instance
+        """
         update = arg.split()
         if not update:
             print("** class name missing **")
@@ -119,7 +131,9 @@ class HBNBCommand(cmd.Cmd):
                 obj.save()
 
     def emptyline(self):
-        "overwrite to repeat last cmd"""
+        """
+        this functin overwrites to repeat last cmd
+        """
         pass
 
 
