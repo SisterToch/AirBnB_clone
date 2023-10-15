@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-
+"""
+this is the command interpreter for the console
+it works both in interactive mode and interactive mode
+"""
 import cmd
 from models.base_model import BaseModel
 from models import storage
