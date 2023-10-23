@@ -1,17 +1,17 @@
 /* search bar */
-.container {
+div.container {
     max-width: 1000px;
     margin: 30px auto;
-    text-align: center;
+    /* text-align: center; */
 }
-.filters {
+section.filters {
     background-color: white;
     height: 70px;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
 }
-.filters button {
+section.filters button {
     background-color: #FF5A5F;
     height: 48px;
     width: 20%;
@@ -22,7 +22,7 @@
     float: right;
     margin: 11px 30px;
 }
-.filters button:hover {
+section.filters button:hover {
     opacity: .9;
 }
 /* location and amenities part of search bar */
@@ -52,4 +52,25 @@
     margin-bottom: 0px;
     text-align: left;
     margin-left: 30px;
+}
+/* display location and amenities options upon hover */
+.popover {
+    display: none;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+}
+.popover h2 {
+    font-size: 16px;
+}
+li {
+    list-style-type: none;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.locations:hover .popover,
+.amenities:hover .popover {
+    display: block;
 }
